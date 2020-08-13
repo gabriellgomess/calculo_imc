@@ -1,0 +1,119 @@
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+   <style>
+       #box {
+           
+           margin: 50px auto;
+           background: rgb(59,244,6);
+           background: linear-gradient(90deg, rgba(59,244,6,1) 0%, rgba(249,255,5,1) 75%, rgba(255,0,26,1) 100%);
+           padding: 30px;
+           border-radius: 10px;
+           box-shadow: -5px 12px 25px 5px rgba(0,0,0,0.75);
+       }
+       #resultado{
+        font-family: 'Poppins', sans-serif;
+       }
+       h6{
+        font-family: 'Shadows Into Light', cursive;
+       }
+       footer {
+            background-color: rgb(221, 217, 217);
+            font-family: 'Arvo', serif;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom:0;
+            left:0;
+        }
+
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0; /* <-- Aparentemente, algumas margens ainda estão lá, apesar de estar ocultas */
+        }
+
+        input[type=number] {
+        -moz-appearance:textfield; /* Firefox */
+        }
+   </style>
+    <title>Teste IMC</title>
+</head>
+<body>
+    <div class="container" id="">
+        <div class="col-xs-6 col-md-6" id="box">
+            <form action="">            
+                    <h4>Teste de IMC</h4><h6>developer by Gabriel Gomes</h6>
+                <div class="form-group">
+                    <input class="form-control" id="peso" type="number" placeholder="Digite seu peso...">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" id="altura" type="number" placeholder="Digite sua altura...">
+                </div>
+                    <input class="btn btn-primary" type="button" value="Testar" onclick= testar()>
+                    <input class="btn btn-dark" type="reset" value="Limpar" onclick= limpar()>
+                       
+            </form>
+            <div id="resultado"></div>     
+        </div>
+        
+    </div>
+
+    <script>
+        function testar() {
+            
+        
+        var peso = document.getElementById('peso').value;
+        var altura = document.getElementById('altura').value;
+        var resposta = document.getElementById('resultado');
+        var resultante = peso / (altura * altura);
+        var resultado = resultante.toFixed(2);
+
+        if (resultado < 18.5) {
+            
+            resposta.innerHTML = "Seu IMC é "+resultado+" você está abaixo do peso."
+            
+        }else if (resultado >= 18.5 && resultado <= 24.999){
+
+            resposta.innerHTML = "Seu IMC é "+resultado+" seu peso está normal."   
+
+        }else if(resultado >= 25 && resultado <= 29.999){
+
+            resposta.innerHTML = "Seu IMC é "+resultado+" você está com sobrepeso."
+
+        }else if(resultado >= 30 && resultado <= 34.999){
+
+            resposta.innerHTML = "Seu IMC é "+resultado+" você está com obesidade grau 1."
+
+        }else if(resultado >= 35 && resultado <= 39.999){
+
+            resposta.innerHTML = "Seu IMC é "+resultado+" você está com obesidade grau 2."
+
+        }else if(resultado > 40){
+
+            resposta.innerHTML = "Seu IMC é "+resultado+" você está com obesidade grau 3."
+
+        }
+}
+
+function limpar() {
+
+    apagar = document.getElementById('resultado');
+    apagar.innerHTML = '';
+    
+}
+
+    </script>
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <span class="text-muted"><h5>Gabriel Gomes - Developer WEB</h5></span>
+        </div>
+    </footer>  
+
+
+</body>
+
+</html>
